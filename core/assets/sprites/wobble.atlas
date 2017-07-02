@@ -1,0 +1,118 @@
+
+wobble.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+blob
+  rotate: false
+  xy: 2, 32
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+blob-white
+  rotate: false
+  xy: 132, 162
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+blobyellow
+  rotate: false
+  xy: 2, 22
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+bluegrass
+  rotate: false
+  xy: 12, 32
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+box
+  rotate: false
+  xy: 132, 152
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+circle
+  rotate: false
+  xy: 2, 42
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+edge
+  rotate: false
+  xy: 142, 162
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+emptyheart
+  rotate: false
+  xy: 2, 12
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+frame
+  rotate: false
+  xy: 12, 22
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 22, 32
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+growth
+  rotate: false
+  xy: 132, 142
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+health
+  rotate: false
+  xy: 142, 152
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 152, 162
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+spike
+  rotate: false
+  xy: 2, 2
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 12, 12
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+stone2
+  rotate: false
+  xy: 22, 22
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1

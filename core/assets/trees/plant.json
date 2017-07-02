@@ -1,0 +1,1 @@
+{start:{r:0.44313726,g:0.7019608,b:0.38431373,a:1},end:{r:0.32156864,g:0.4627451,b:0.2901961,a:1},space:15,len:1,swayscl:5,swayphase:15,swayspace:1,thickness:2,iterations:4,axiom:X,rules:{F:F,X:"FF-[X+X]+F[+X]-X"}}
