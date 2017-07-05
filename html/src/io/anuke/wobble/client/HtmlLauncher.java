@@ -8,11 +8,12 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import io.anuke.wobble.Vars;
 import io.anuke.wobble.Wobble;
 
 public class HtmlLauncher extends GwtApplication {
-    static final int WIDTH = 576;
-    static final int HEIGHT = 576;
+    static final int WIDTH = Vars.viewWidth;
+    static final int HEIGHT = Vars.viewHeight;
     static HtmlLauncher instance;
 
     @Override

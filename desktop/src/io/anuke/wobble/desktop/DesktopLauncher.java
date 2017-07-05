@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setTitle("Wobble");
 		config.setMaximized(true);
-		config.setWindowedMode(576, 576);
+		config.setWindowedMode(612, 612);
 		//config.useVsync(false);
 		new Lwjgl3Application(new Wobble(), config);
 	}

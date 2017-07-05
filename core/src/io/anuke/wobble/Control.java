@@ -36,20 +36,19 @@ public class Control extends RendererModule{
 	public Control() {
 		atlas = new Atlas("wobble.atlas");
 		//clearColor = Color.WHITE;
+		
+		
 
-		cameraScale = 2;
+		cameraScale = 3;
 		pixelate();
+		//Draw.addSurface("pixel2", 1);
 
 		KeyBinds.defaults(
 			"up", Keys.W, 
 			"left", Keys.A, 
 			"down", Keys.S, 
 			"right", Keys.D, 
-			"pause", Keys.ESCAPE,
-			"attackup", Keys.UP,
-			"attackdown", Keys.DOWN,
-			"attackleft", Keys.LEFT,
-			"attackright", Keys.RIGHT
+			"pause", Keys.ESCAPE
 		);
 		
 		for(int i = 0; i < maps.length; i ++){
@@ -65,7 +64,7 @@ public class Control extends RendererModule{
 		
 		Sounds.load("jump.wav", "land.wav", "slimebounce.wav", "slimedie.wav", "splat.wav", "land2.wav");
 		
-		Musics.load("menu.mp3",/*, "worldt.mp3", "1.mp3", "2.mp3", "3.mp3", "4.mp3", */"west.mp3");
+		Musics.load("menu.mp3", "west.mp3");
 		
 		Musics.createTracks("menu", "menu");
 		
@@ -182,17 +181,13 @@ public class Control extends RendererModule{
 
 	@Override
 	public void update(){
-		
-		//TODO remove
-		if(Inputs.keyDown(Keys.ESCAPE))
-			Gdx.app.exit();
 
 		if(GameState.is(State.playing)){
 			playtime += Mathf.delta();
 			
 			if(Gdx.app.getType() == ApplicationType.WebGL){
-				camera.viewportWidth = 576/cameraScale;
-				camera.viewportHeight = 576/cameraScale;
+				camera.viewportWidth = Vars.viewWidth/cameraScale;
+				camera.viewportHeight = Vars.viewHeight/cameraScale;
 			}
 			
 			setCamera(worldsize * tilesize / 2-tilesize/2, worldsize * tilesize / 2-4);

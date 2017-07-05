@@ -1,6 +1,8 @@
 package io.anuke.wobble;
 
 public class Vars{
+	public static final int viewWidth = 576;
+	public static final int viewHeight = 576;
 	public static Control control;
 	public static UI ui;
 	
