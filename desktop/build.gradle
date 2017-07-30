@@ -36,6 +36,33 @@ task dist(type: Jar) {
 
 dist.dependsOn classes
 
+task copyDist(type: Copy) {
+    into "/home/anuke/Documents/Packr/"
+	from "build/libs/desktop-1.0.jar"
+}
+
+task copyLibs(type: Copy) {
+    into "/home/anuke/Documents/Packr/classpath"
+	from configurations.testRuntime
+}
+
+task clearLibs(type: Delete) {
+    delete "/home/anuke/Documents/Packr/classpath"
+}
+
+task packr() {
+	dependsOn 'dist'
+	dependsOn 'copyDist'
+	dependsOn 'clearLibs'
+	dependsOn 'copyLibs'
+}
+
+task packrWin(dependsOn: packr, type: Exec) {
+	
+	commandLine "java", "-jar", "/home/anuke/Documents/Packr/packr.jar", "--resources", project.ext.assetsDir, "--platform", "windows32", "--executable", project.name, "--output", "packr-out/", "--mainclass", project.ext.mainClassName, "/home/anuke/Documents/Packr/config.json"
+	
+}
+
 eclipse {
     project {
         name = appName + "-desktop"
