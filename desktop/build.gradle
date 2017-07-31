@@ -6,6 +6,8 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 project.ext.mainClassName = "io.anuke.wobble.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets");
 
+def PACKR_DIR = "/home/anuke/Documents/Packr/"
+
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
@@ -36,31 +38,49 @@ task dist(type: Jar) {
 
 dist.dependsOn classes
 
-task copyDist(type: Copy) {
-    into "/home/anuke/Documents/Packr/"
-	from "build/libs/desktop-1.0.jar"
+task clearOut(type: Delete){
+	delete "packr-out/"
 }
 
-task copyLibs(type: Copy) {
-    into "/home/anuke/Documents/Packr/classpath"
-	from configurations.testRuntime
+ext.getPlatform = {
+	if(!project.gradle.startParameter.taskNames.first().contains("packr")) return;
+
+	if (project.hasProperty("platform")) {
+		def lc = platform.toLowerCase()
+		if(lc.equals("windows")){
+			return "windows64";
+		}else if(lc.equals("linux")){
+			return "linux64";
+		}else if(lc.equals("mac")){
+			return "mac";
+		}else{
+			throw new InvalidUserDataException("Invalid platform. Set platform with -Pplatform=windows/linux/mac");
+		}
+	}else{
+		throw new InvalidUserDataException("No platform defined. Set platform with -Pplatform=windows/linux/mac");
+	}
 }
 
-task clearLibs(type: Delete) {
-    delete "/home/anuke/Documents/Packr/classpath"
-}
+//note: call desktop:dist beforehand
+task packrCmd(type: Exec) {
 
-task packr() {
-	dependsOn 'dist'
-	dependsOn 'copyDist'
-	dependsOn 'clearLibs'
-	dependsOn 'copyLibs'
-}
+	copy{
+		into PACKR_DIR
+		from "build/libs/desktop-1.0.jar"
+	}
 
-task packrWin(dependsOn: packr, type: Exec) {
+	commandLine "java", "-jar", PACKR_DIR+"packr.jar", "--verbose", /*"--resources", project.ext.assetsDir,*/ "--platform", getPlatform(), "--executable", appName, "--output", "packr-out/", "--mainclass", project.ext.mainClassName, "--jdk", PACKR_DIR+"jdk-"+getPlatform()+".zip", "--classpath", 
+		"--", PACKR_DIR+"config.json"
 	
-	commandLine "java", "-jar", "/home/anuke/Documents/Packr/packr.jar", "--resources", project.ext.assetsDir, "--platform", "windows32", "--executable", project.name, "--output", "packr-out/", "--mainclass", project.ext.mainClassName, "/home/anuke/Documents/Packr/config.json"
+}
+
+task packrZip(type: Zip) {
+	dependsOn "packrCmd"
+	finalizedBy "clearOut"
 	
+    from "packr-out/"
+    archiveName appName + "-" + getPlatform() + ".zip"
+    destinationDir(file("packr-export"))
 }
 
 eclipse {

@@ -1,1 +1,1 @@
-{start:{r:0.44313726,g:0.7019608,b:0.38431373,a:1},end:{r:0.44313726,g:0.7019608,b:0.38431373,a:1},space:15,len:3,swayscl:2,swayphase:15,swayspace:1,thickness:2,iterations:3,axiom:X,rules:{F:F,X:"-[[X]+X]+F[+FX]-X"}}
+{start:{r:0.21568628,g:0.40784314,b:0.17254902,a:1},end:{r:0.5803922,g:0.6745098,b:0.38431373,a:1},space:25,len:4,swayscl:2,swayphase:15,swayspace:1,thickness:1,iterations:6,axiom:X,rules:{F:FF,X:"F-[[X]+X]+F[+FX]-X"}}
